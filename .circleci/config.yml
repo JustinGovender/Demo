@@ -1,5 +1,10 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@0.2.1
+
 jobs:
-  build:
+  build-and-test:
     executor: python/default
     steps:
       - checkout
@@ -8,13 +13,12 @@ jobs:
       - python/save-cache
       - run:
           command: |
-            # pytest would be a dep in requirements.txt
+            python3 -m venv venv
+            . venv/bin/activate
             py.test
-          name: Test
-orbs:
-  python: circleci/python@0.1
-version: 2.1
+          name: run tests
+          
 workflows:
   main:
     jobs:
-      - build
+      - build-and-test
