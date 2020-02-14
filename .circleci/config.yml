@@ -11,10 +11,12 @@ jobs:
       - python/load-cache
       - python/install-deps
       - python/save-cache
-      command: |
-        # pytest would be a dep in requirements.txt
-        pytest
-      name: Test
+      - run:
+          command:  |
+            python3 -m venv venv
+            . venv/bin/activate
+            py.test
+          name: Test
 workflows:
   main:
     jobs:
