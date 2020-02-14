@@ -11,11 +11,10 @@ jobs:
       - python/load-cache
       - python/install-deps
       - python/save-cache
-          - run:
-              command: |
-                # pytest would be a dep in requirements.txt
-                pytest
-              name: Test
+      command: |
+        # pytest would be a dep in requirements.txt
+        pytest
+      name: Test
 workflows:
   main:
     jobs:
