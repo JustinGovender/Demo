@@ -13,7 +13,7 @@ jobs:
       - python/save-cache
       - run:
           command: |
-            pip list
+            py.test
           name: run tests
           
 workflows:
